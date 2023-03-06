@@ -20,11 +20,17 @@ window = sg.Window('Archive Extractor', layout=[[label1, input1, choose_button1]
 
 while True:
     event, values = window.read()
-    print(event, values)
-    archivepath = values['archive']
-    dest_dir = values['folder']
-    extract_archive(archivepath, dest_dir)
-    window['output'].update('Extraction completed!')
+    match event:
+        case sg.WIN_CLOSED:
+            break
+    try:
+        archivepath = values['archive']
+        dest_dir = values['folder']
+        extract_archive(archivepath, dest_dir)
+        window['output'].update('Extraction completed!')
+    except FileNotFoundError:
+        sg.popup('Please select a valid archive and destination folder.',
+                 font='Helvetica')
 
 window.close()
 
