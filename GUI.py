@@ -3,7 +3,7 @@ from zip_extractor import extract_archive
 
 sg.theme('Black')
 
-label1 = sg.Text('Select Archive: ')
+label1 = sg.Text('Select Archive:       ')
 input1 = sg.Input()
 choose_button1 = sg.FileBrowse('Choose', key='archive')
 
@@ -17,16 +17,14 @@ output_label = sg.Text(key='output', text_color='green')
 space = sg.Text('')
 space2 = sg.Text('')
 
-col1 = sg.Column([[label1], [label2], [extract_button]])
-col2 = sg.Column([[input1], [input2], [space]])
-col3 = sg.Column([[choose_button1], [choose_button2], [space2]])
+#col1 = sg.Column([[label1], [label2], [extract_button]])
+#col2 = sg.Column([[input1], [input2], [space]])
+#col3 = sg.Column([[choose_button1], [choose_button2], [space2]])
 
-window = sg.Window('Archive Extractor', layout=[[col1, col2, col3]])
-
-#                                               [[label1, input1, choose_button1],
-#                                               [label2, input2, choose_button2],
-#                                               [extract_button, output_label]])
-
+window = sg.Window('Archive Extractor', layout=[[label1, input1, choose_button1],
+                                                [label2, input2, choose_button2],
+                                                [extract_button, output_label]])
+#[[col1, col2, col3]])
 
 
 while True:
@@ -44,5 +42,6 @@ while True:
                  font='Helvetica')
 
 window.close()
+
 
 
