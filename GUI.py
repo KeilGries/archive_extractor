@@ -14,9 +14,20 @@ choose_button2 = sg.FolderBrowse('Choose', key='folder')
 extract_button = sg.Button('Extract')
 output_label = sg.Text(key='output', text_color='green')
 
-window = sg.Window('Archive Extractor', layout=[[label1, input1, choose_button1],
-                                                [label2, input2, choose_button2],
-                                                [extract_button, output_label]])
+space = sg.Text('')
+space2 = sg.Text('')
+
+col1 = sg.Column([[label1], [label2], [extract_button]])
+col2 = sg.Column([[input1], [input2], [space]])
+col3 = sg.Column([[choose_button1], [choose_button2], [space2]])
+
+window = sg.Window('Archive Extractor', layout=[[col1, col2, col3]])
+
+#                                               [[label1, input1, choose_button1],
+#                                               [label2, input2, choose_button2],
+#                                               [extract_button, output_label]])
+
+
 
 while True:
     event, values = window.read()
